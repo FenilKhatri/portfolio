@@ -38,24 +38,23 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </ReduxProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Fenil Khatri",
+              jobTitle: "Software Engineering Intern",
+              url: "https://fenil-khatri.vercel.app",
+              sameAs: [
+                "https://github.com/FenilKhatri",
+                "https://linkedin.com/in/fenilkhatri/",
+              ],
+            }),
+          }}
+        />
       </body>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Fenil Khatri",
-            jobTitle: "Software Engineering Intern",
-            url: "https://fenil-khatri.vercel.app",
-            sameAs: [
-              "https://github.com/FenilKhatri",
-              "https://linkedin.com/in/fenilkhatri/",
-            ],
-          }),
-        }}
-      />
     </html>
   );
 }
