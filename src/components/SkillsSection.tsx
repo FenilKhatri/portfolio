@@ -14,13 +14,13 @@ const SkillsSection = () => {
                 transition={{ duration: 0.6 }}
                 className="space-y-3 md:space-y-10 order-1 md:order-2"
             >
-                <div className="text-sm uppercase font-semibold tracking-[0.3em] text-orange-500 dark:text-emerald-500">
+                <div className="font-code text-sm uppercase font-semibold tracking-[0.3em] text-orange-500 dark:text-emerald-500">
                     Technical Arsenal
                 </div>
 
                 <h2 className="text-3xl md:text-5xl lg:text-6xl w-full max-w-3xl font-medium leading-tight">
                     Modern Technologies for {" "}
-                    <span className="text-orange-500 dark:text-emerald-500">future-proof</span>{" "}
+                    <span className="font-code text-orange-500 dark:text-emerald-500">future-proof</span>{" "}
                     applications.
                 </h2>
 

@@ -80,3 +80,14 @@ export const itemVariants: Variants = {
         },
     },
 };
+
+export const viewAnimation = {
+    initial: "hidden",
+    whileInView: "show",
+    viewport: { once: true, amount: 0.1 },
+};
+
+export const loadAnimation = {
+    initial: "hidden",
+    animate: "show",
+};

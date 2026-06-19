@@ -1,4 +1,4 @@
-import { stagger } from "@/animations/motionVarients";
+import { stagger, viewAnimation } from "@/animations/motionVarients";
 import { techStack } from "@/data/skills";
 import { motion } from "framer-motion";
 
@@ -6,9 +6,7 @@ const TechCards = () => {
     return (
         <motion.div
             variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
+            {...viewAnimation}
             className="w-full mt-10 md:mt-16"
         >
             <div className="w-full border-y-4 border-black dark:border-white py-5">
@@ -33,7 +31,7 @@ const TechCards = () => {
                                     <span className="text-[10px] md:text-xs tracking-[0.2em] text-black/40 dark:text-white/40 uppercase font-mono">
                                         . // {tech.type}
                                     </span>
-                                    <span className="text-sm md:text-lg font-bold tracking-wider uppercase text-black/80 dark:text-white/80 group-hover:text-orange-600 dark:group-hover:text-emerald-400 transition-colors duration-300 text-center">
+                                    <span className="font-code text-sm md:text-lg font-bold tracking-wider uppercase text-black/80 dark:text-white/80 group-hover:text-orange-600 dark:group-hover:text-emerald-400 transition-colors duration-300 text-center">
                                         {tech.name}
                                     </span>
                                 </div>

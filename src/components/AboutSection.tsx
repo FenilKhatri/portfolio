@@ -1,6 +1,6 @@
 "use client";
 
-import { containerVariants } from "@/animations/motionVarients";
+import { slideLeft, slideRight, viewAnimation } from "@/animations/motionVarients";
 import { motion } from "framer-motion";
 import aboutImg from "@/public/images/profile/image.png";
 import { CurvedClipCard } from "@/components/ui/CurvedClipCard";
@@ -16,10 +16,8 @@ const AboutSection = () => {
 
         {/* LEFT SIDE — image column */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          variants={slideLeft}
+          {...viewAnimation}
           className="relative flex justify-center order-2 md:order-1"
         >
           {/* Ambient background glow */}
@@ -66,13 +64,11 @@ const AboutSection = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={slideRight}
+          {...viewAnimation}
           className="space-y-6 order-1 md:order-2"
         >
-          <div className="flex gap-5 items-center text-sm font-semibold tracking-[0.3em] uppercase text-orange-500 dark:text-emerald-500">
+          <div className="font-code flex gap-5 items-center text-sm font-semibold tracking-[0.3em] uppercase text-orange-500 dark:text-emerald-500">
             <span className="h-3 w-3 rounded-full bg-orange-500 dark:bg-emerald-500 animate-bounce" />
             About Me
           </div>
@@ -80,7 +76,7 @@ const AboutSection = () => {
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium leading-tight">
             Building Modern
             <br />
-            <span className="text-orange-500 dark:text-emerald-500">
+            <span className="font-code text-orange-500 dark:text-emerald-500">
               Web Experiences
             </span>
           </h2>
@@ -98,7 +94,7 @@ const AboutSection = () => {
             {
               aboutSkills.map((skill) => (
                 <div key={skill.value} className="rounded-2xl border border-orange-200 dark:border-emerald-500/30 p-5 backdrop-blur-md bg-white/50 dark:bg-white/5">
-                  <h3 className="text-xl md:text-2xl font-bold text-orange-500 dark:text-emerald-500">
+                  <h3 className="font-code text-xl md:text-2xl font-bold text-orange-500 dark:text-emerald-500">
                     {skill.value}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400">

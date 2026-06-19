@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { SOCIAL_LINKS } from "@/constants/links";
+import { socialLinks } from "@/constants/links";
 
 export const SocialDock = () => (
   <>
-    {SOCIAL_LINKS.map(({ href, icon: Icon, label, id }) => (
+    {socialLinks.map(({ href, icon: Icon, label, id }) => (
       <motion.a
         key={label}
         id={id}

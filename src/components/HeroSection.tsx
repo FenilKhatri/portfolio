@@ -8,7 +8,7 @@ import heroImg from "@/public/images/profile/image.png";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { motion } from "framer-motion";
-import { containerVariants, itemVariants, scaleIn } from "@/animations/motionVarients";
+import { containerVariants, itemVariants, scaleIn, loadAnimation } from "@/animations/motionVarients";
 
 const HeroSection = () => {
 
@@ -22,8 +22,7 @@ const HeroSection = () => {
             {/* Text Section */}
             <motion.div
                 variants={containerVariants}
-                initial="hidden"
-                animate="show"
+                {...loadAnimation}
                 className="w-full md:w-1/2 flex flex-col gap-5 md:gap-8 items-start text-left">
                 <motion.p variants={itemVariants} className="w-fit font-heading text-orange-600 dark:text-emerald-400 px-4 py-2 bg-orange-500/10 dark:bg-emerald-500/10 border border-orange-500/20 dark:border-emerald-500/20 rounded-md">
                     MERN Stack Intern
@@ -98,8 +97,7 @@ const HeroSection = () => {
             {/* Image Section */}
             <motion.div
                 variants={scaleIn}
-                initial="hidden"
-                animate="show"
+                {...loadAnimation}
                 className="relative flex justify-center mt-12 md:mt-0 w-full md:w-1/2 mx-auto">
 
                 <div className="relative w-fit flex justify-center items-center">
