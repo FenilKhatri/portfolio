@@ -5,7 +5,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import { Metadata } from "next";
 
-export const metaData: Metadata = {
+export const metadata: Metadata = {
   title: "Fenil Khatri | MERN Stack Developer",
   description: "Software Engineering Intern and MERN Stack Developer specializing in developing in Web development.",
   keywords: [
@@ -16,6 +16,14 @@ export const metaData: Metadata = {
     "Node.js",
     "Portfolio",
   ],
+  icons: {
+    icon: "/favicon.ico"
+  },
+  openGraph: {
+    title: "Fenil Khatri | MERN Stack Developer",
+    description: "Portfolio of Fenil Khatri, MERN Stack Developer.",
+    images: ["/images/profile/image.png"],
+  },
 }
 
 export default function Home() {
