@@ -22,6 +22,14 @@ export const metadata: Metadata = {
   creator: "Fenil Khatri",
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Fenil Khatri",
+  url: "https://fenil-khatri.vercel.app",
+  jobTitle: "MERN Stack Developer",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -52,6 +60,12 @@ export default function RootLayout({
                 "https://linkedin.com/in/fenilkhatri/",
               ],
             }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
           }}
         />
       </body>

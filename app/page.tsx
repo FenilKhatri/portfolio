@@ -6,6 +6,7 @@ import ContactSection from "@/components/ContactSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://fenil-khatri.vercel.app"),
   title: "Fenil Khatri | MERN Stack Developer",
   description: "Software Engineering Intern and MERN Stack Developer specializing in developing in Web development.",
   keywords: [
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico"
   },
   openGraph: {
+    siteName: "Fenil Khatri",
     title: "Fenil Khatri | MERN Stack Developer",
     description: "Portfolio of Fenil Khatri, MERN Stack Developer.",
     images: ["/images/profile/image.png"],
