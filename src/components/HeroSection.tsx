@@ -15,93 +15,93 @@ const HeroSection = () => {
     const theme = useSelector((state: RootState) => state.theme.theme);
 
     return (
-        <main
+        <div
             id="home"
-            className="min-h-screen w-full max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-8 lg:gap-16 px-5 py-20 overflow-x-hidden"
+            className="min-h-screen w-full max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-8 lg:gap-16 px-5 py-20 overflow-x-hidden lg:overflow-visible"
         >
             {/* Text Section */}
-            <motion.div 
+            <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
                 className="w-full md:w-1/2 flex flex-col gap-5 md:gap-8 items-start text-left">
-                    <motion.p variants={itemVariants} className="w-fit font-heading text-orange-500 dark:text-emerald-500 px-4 py-2 bg-orange-500/10 dark:bg-emerald-500/10 border border-orange-500/20 dark:border-emerald-500/20 rounded-md">
-                        MERN Stack Intern
-                    </motion.p>
+                <motion.p variants={itemVariants} className="w-fit font-heading text-orange-600 dark:text-emerald-400 px-4 py-2 bg-orange-500/10 dark:bg-emerald-500/10 border border-orange-500/20 dark:border-emerald-500/20 rounded-md">
+                    MERN Stack Intern
+                </motion.p>
 
-                    <motion.h1 variants={itemVariants} className="relative font-body text-4xl sm:text-5xl lg:text-6xl leading-tight">
-                        <span className="absolute -top-12 -left-5 md:-top-16 md:-left-5 opacity-30">
-                            <Quote className="rotate-180 w-10 h-10 md:w-16 md:h-16 lg:w-20 lg:h-20" />
-                        </span>
-                        Hi, I'm{" "}
-                        <span className="block font-code text-orange-500 dark:text-emerald-500 mt-2">
-                            Fenil Khatri
-                        </span>
+                <motion.h1 variants={itemVariants} className="relative font-body text-4xl sm:text-5xl lg:text-6xl leading-tight">
+                    <span className="absolute -top-12 -left-5 md:-top-16 md:-left-20 opacity-30">
+                        <Quote className="rotate-180 w-10 h-10 md:w-16 md:h-16 lg:w-20 lg:h-20" />
+                    </span>
+                    Hi, I'm{" "}
+                    <span className="block font-code text-orange-500 dark:text-emerald-500 mt-2">
+                        Fenil Khatri
+                    </span>
 
-                        <span className="text-orange-500 dark:text-emerald-500">
-                            <TypeAnimation
-                                sequence={[
-                                    "Build",
-                                    1200,
-                                    "Scale",
-                                    1200,
-                                    "Deploy",
-                                    1200,
-                                ]}
-                                wrapper="span"
-                                speed={10}
-                                repeat={Infinity}
-                            />
-                        </span>{" "}
-                        Web Applications
-                    </motion.h1>
-
-                    <motion.p variants={itemVariants} className="max-w-2xl text-base sm:text-lg lg:text-xl leading-8 text-slate-600 dark:text-slate-400 text-justify">
-                        I build responsive and user-focused web applications
-                        using{" "}
-                        <span className="font-medium text-black dark:text-white">
-                            Next.js, TypeScript, Node.js, and MongoDB/MySQL
-                        </span>
-                        . As a Software Engineering Intern, I'm constantly
-                        learning new technologies and improving my skills
-                        through real-world projects.
-                    </motion.p>
-
-                    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto">
-                        <Button
-                            variant={theme === "dark" ? "primary" : "secondary"}
-                            size="md"
-                            children={
-                                <a href="#projects">
-                                    View Projects
-                                </a>
-                            }
+                    <span className="text-orange-500 dark:text-emerald-500">
+                        <TypeAnimation
+                            sequence={[
+                                "Build",
+                                1200,
+                                "Scale",
+                                1200,
+                                "Deploy",
+                                1200,
+                            ]}
+                            wrapper="span"
+                            speed={10}
+                            repeat={Infinity}
                         />
+                    </span>{" "}
+                    Web Applications
+                </motion.h1>
 
-                        <Button
-                            variant="outline"
-                            size="md"
-                            children={
-                                <a
-                                    href="/resume.pdf"
-                                    download
-                                    className="flex items-center gap-2"
-                                >
-                                    Download Resume
-                                    <Download size={20} />
-                                </a>
-                            }
-                        />
-                    </motion.div>
+                <motion.p variants={itemVariants} className="max-w-2xl text-base sm:text-lg lg:text-xl leading-8 text-slate-600 dark:text-slate-400 text-justify">
+                    I build responsive and user-focused web applications
+                    using{" "}
+                    <span className="font-medium text-black dark:text-white">
+                        Next.js, TypeScript, Node.js, and MongoDB/MySQL
+                    </span>
+                    . As a Software Engineering Intern, I'm constantly
+                    learning new technologies and improving my skills
+                    through real-world projects.
+                </motion.p>
+
+                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto">
+                    <Button
+                        variant={theme === "dark" ? "primary" : "secondary"}
+                        size="md"
+                        children={
+                            <a href="#projects">
+                                View Projects
+                            </a>
+                        }
+                    />
+
+                    <Button
+                        variant="outline"
+                        size="md"
+                        children={
+                            <a
+                                href="/resume.pdf"
+                                download
+                                className="flex items-center gap-2"
+                            >
+                                Download Resume
+                                <Download size={20} />
+                            </a>
+                        }
+                    />
+                </motion.div>
             </motion.div>
 
             {/* Image Section */}
-            <motion.div 
+            <motion.div
                 variants={scaleIn}
                 initial="hidden"
                 animate="show"
                 className="relative flex justify-center mt-12 md:mt-0 w-full md:w-1/2 mx-auto">
-                
+
                 <div className="relative w-fit flex justify-center items-center">
                     {/* Availability Badge */}
                     <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-background border border-border rounded-full px-4 py-2 shadow-lg whitespace-nowrap z-20">
@@ -156,7 +156,7 @@ const HeroSection = () => {
                     />
                 </div>
             </motion.div>
-        </main>
+        </div>
     );
 };
 
