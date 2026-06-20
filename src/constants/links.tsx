@@ -29,3 +29,12 @@ export const socialLinks = [
     id: "about-instagram-link",
   },
 ];
+
+export const adminLinks = [
+    { name: "Profile", path: "/admin/dashboard/profile" },
+    { name: "Projects", path: "/admin/dashboard/projects" },
+    { name: "Contacts", path: "/admin/dashboard/contacts" },
+    { name: "Skills", path: "/admin/dashboard/skills" },
+    { name: "Education", path: "/admin/dashboard/education" },
+    { name: "Experience", path: "/admin/dashboard/experience" },
+  ];

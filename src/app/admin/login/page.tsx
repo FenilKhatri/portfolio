@@ -1,7 +1,7 @@
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 
-const page = () => {
+const Login = () => {
     return (
         <div className='h-screen w-full flex items-center justify-center px-5'>
 
@@ -39,4 +39,4 @@ const page = () => {
     )
 }
 
-export default page;
+export default Login;
