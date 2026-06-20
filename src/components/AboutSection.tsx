@@ -93,7 +93,7 @@ const AboutSection = () => {
           <div className="grid grid-cols-2 gap-4 pt-4">
             {
               aboutSkills.map((skill) => (
-                <div key={skill.value} className="rounded-2xl border border-orange-200 dark:border-emerald-500/30 p-5 backdrop-blur-md bg-white/50 dark:bg-white/5">
+                <div key={skill.value} className="border border-orange-200 dark:border-emerald-500/30 p-5 backdrop-blur-md bg-white/50 dark:bg-white/5 hover:rounded-lg transition-all duration-300 cursor-pointer">
                   <h3 className="font-code text-xl md:text-2xl font-bold text-orange-500 dark:text-emerald-500">
                     {skill.value}
                   </h3>

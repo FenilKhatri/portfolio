@@ -2,7 +2,7 @@ import { PROFILE } from "./profile";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/ICONS";
 
 export const NavLinks = [
-    { href: "#home", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
