@@ -12,14 +12,15 @@ const sizes = {
 
 const Button = ({
     children,
+    type="submit",
     variant = "primary",
     size = "md",
     className = "",
     ...props
-}: { children: React.ReactNode; variant?: keyof typeof variants; size?: keyof typeof sizes; className?: string; props?: React.ComponentProps<"button"> }) => {
+}: { children: React.ReactNode; type?: "submit" | "button"; variant?: keyof typeof variants; size?: keyof typeof sizes; className?: string; props?: React.ComponentProps<"button"> }) => {
     return (
         <button
-            type="button"
+            type={type}
             className={`
         inline-flex items-center justify-center gap-2
         font-semibold hover:rounded-sm active:scale-95
