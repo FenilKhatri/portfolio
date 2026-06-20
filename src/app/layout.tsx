@@ -17,6 +17,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  title: "Fenil Khatri | MERN Stack Developer",
+  description: "Portfolio of Fenil Khatri, a MERN Stack Developer specializing in responsive and user-focused web applications.",
   metadataBase: new URL("https://fenil-portfolio.vercel.app"),
   authors: [{ name: "Fenil Khatri" }],
   creator: "Fenil Khatri",

@@ -105,7 +105,6 @@ const ContactSection = () => {
                 label="Name"
                 name="name"
                 placeholder="Enter your name"
-                autoFocus
                 required
               />
 
