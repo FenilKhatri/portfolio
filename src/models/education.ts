@@ -1,35 +1,30 @@
-import sequelize from "@/utils/sequelize";
 import { DataTypes } from "sequelize";
+import sequelize from "@/utils/sequelize";
 
-const Project = sequelize.define("Project", {
-    title: {
+const Education = sequelize.define("Education", {
+    university: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    description: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-    },
-    techStack: {
+    degree: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    githubURL: {
+    fieldOfStudy: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    liveURL: {
-        type: DataTypes.STRING,
+    startDate: {
+        type: DataTypes.DATE,
         allowNull: false,
     },
-    projectStatus: {
-        type: DataTypes.STRING,
+    endDate: {
+        type: DataTypes.DATE,
         allowNull: false,
     },
-    featured: {
-        type: DataTypes.BOOLEAN,
+    gpa: {
+        type: DataTypes.DECIMAL(3, 2),
         allowNull: false,
-        defaultValue: false,
     },
     createdAt: {
         type: DataTypes.DATE,
@@ -41,4 +36,4 @@ const Project = sequelize.define("Project", {
     },
 });
 
-export default Project;
+export default Education;

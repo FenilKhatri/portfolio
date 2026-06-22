@@ -1,17 +1,29 @@
 import sequelize from "@/utils/sequelize";
 import { DataTypes } from "sequelize";
 
-const Contact = sequelize.define("Contact", {
+const Profile = sequelize.define("Profile", {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    email: {
+    headline: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    message: {
+    tagline: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    about: {
         type: DataTypes.TEXT,
+        allowNull: false,
+    },
+    imageURL: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    resumeURL: {
+        type: DataTypes.STRING,
         allowNull: false,
     },
     createdAt: {
@@ -24,4 +36,4 @@ const Contact = sequelize.define("Contact", {
     },
 });
 
-export default Contact;
+export default Profile;

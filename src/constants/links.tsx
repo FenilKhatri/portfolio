@@ -1,5 +1,5 @@
 import { PROFILE } from "./profile";
-import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/ICONS";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
 
 export const NavLinks = [
     { href: "/", label: "Home" },
@@ -32,10 +32,11 @@ export const socialLinks = [
 
 export const adminLinks = [
     { name: "Home", path: "/" },
-    { name: "Profile", path: "/admin/dashboard/profile" },
-    { name: "Projects", path: "/admin/dashboard/projects" },
-    { name: "Contacts", path: "/admin/dashboard/contacts" },
-    { name: "Skills", path: "/admin/dashboard/skills" },
-    { name: "Education", path: "/admin/dashboard/education" },
-    { name: "Experience", path: "/admin/dashboard/experience" },
+    { name: "Profile", path: "/admin/profile" },
+    { name: "Dashboard", path: "/admin/dashboard" },
+    { name: "Projects", path: "/admin/projects" },
+    { name: "Contacts", path: "/admin/contacts" },
+    { name: "Skills", path: "/admin/skills" },
+    { name: "Education", path: "/admin/education" },
+    { name: "Experience", path: "/admin/experience" },
   ];

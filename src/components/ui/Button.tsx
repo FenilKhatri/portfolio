@@ -1,7 +1,8 @@
 const variants = {
     primary: "text-white bg-emerald-500 border border-emerald-500 hover:bg-emerald-600",
     secondary: "text-white bg-orange-500 border border-orange-500 hover:bg-orange-600",
-    outline: "text-black dark:text-white border border-black dark:border-white"
+    outline: "text-black dark:text-white border border-black dark:border-white",
+    danger: "text-white bg-red-500 border border-red-500 hover:bg-red-600"
 };
 
 const sizes = {

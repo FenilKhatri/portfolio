@@ -1,17 +1,13 @@
 import sequelize from "@/utils/sequelize";
 import { DataTypes } from "sequelize";
 
-const Contact = sequelize.define("Contact", {
-    name: {
+const Skill = sequelize.define("Skill", {
+    category: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    message: {
-        type: DataTypes.TEXT,
+    skillName: {
+        type: DataTypes.JSON,
         allowNull: false,
     },
     createdAt: {
@@ -24,4 +20,4 @@ const Contact = sequelize.define("Contact", {
     },
 });
 
-export default Contact;
+export default Skill;

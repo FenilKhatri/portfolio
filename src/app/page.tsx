@@ -1,10 +1,10 @@
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import ContactSection from "@/components/ContactSection";
+import Navbar from "@/components/sections/Navbar";
+import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/AboutSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import ContactSection from "@/components/sections/ContactSection";
 import { Metadata } from "next";
-import SkillsSection from "@/components/SkillsSection";
+import SkillsSection from "@/components/sections/SkillsSection";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fenil-khatri.vercel.app"),

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Code2, Globe, Server, Database, Home } from "lucide-react";
+import { Code2, Database, Globe, Home, Server } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function NotFound() {
