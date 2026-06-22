@@ -31,6 +31,7 @@ export const socialLinks = [
 ];
 
 export const adminLinks = [
+    { name: "Home", path: "/" },
     { name: "Profile", path: "/admin/dashboard/profile" },
     { name: "Projects", path: "/admin/dashboard/projects" },
     { name: "Contacts", path: "/admin/dashboard/contacts" },

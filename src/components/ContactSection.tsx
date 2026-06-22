@@ -5,13 +5,12 @@ import { PROFILE } from "@/constants/profile";
 import { motion } from "framer-motion";
 import Input from "./ui/Input";
 import Button from "./ui/Button";
-import { useSelector } from "react-redux";
 import TextArea from "./ui/TextArea";
+import useTheme from "@/hooks/useTheme";
 
 const ContactSection = () => {
 
-  const selector = useSelector((state: any) => state.theme.theme);
-  const theme = selector == 'dark' ? 'primary' : 'secondary';
+  const { theme } = useTheme();
 
   return (
     <div
@@ -122,7 +121,7 @@ const ContactSection = () => {
                 required
               />
 
-              <Button type="submit" variant={theme} className="w-full" children="Send Message" />
+              <Button type="submit" variant={theme === 'dark' ? 'primary' : 'secondary'} className="w-full" children="Send Message" />
             </form>
           </motion.div>
         </div>

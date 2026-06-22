@@ -5,14 +5,13 @@ import Button from "./ui/Button";
 import { Code2, Database, Download, Globe, Quote, Server } from "lucide-react";
 import Image from "next/image";
 import heroImg from "@/public/images/profile/image.png";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants, scaleIn, loadAnimation } from "@/animations/motionVarients";
+import useTheme from "@/hooks/useTheme";
 
 const HeroSection = () => {
 
-    const theme = useSelector((state: RootState) => state.theme.theme);
+    const { theme } = useTheme();
 
     return (
         <div

@@ -1,12 +1,13 @@
 "use client"
 
-import { useSelector } from "react-redux"
-import Sidebar from "../(sidebar)/page"
+import { toggleTheme } from "@/store/features/themeSlice";
+import useTheme from "@/hooks/useTheme";
 import { Moon, Sun } from "lucide-react";
+import Sidebar from "../(sidebar)/page";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
 
-    const theme = useSelector((state: any) => state.theme.theme);
+    const { theme, handleTheme } = useTheme();
 
     return (
         <div className="flex flex-col lg:flex-row min-h-screen bg-slate-50 dark:bg-[#0a0a0a]">
@@ -20,7 +21,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
                             </div>
                             <p className="font-code text-2xl font-bold bg-clip-text text-transparent bg-orange-500 dark:bg-emerald-500 tracking-tight">Admin Fenil</p>
                         </div>
-                        <button className="cursor-pointer text-orange-500 dark:text-emerald-500">
+                        <button className="cursor-pointer text-orange-500 dark:text-emerald-500" onClick={handleTheme}>
                             {
                                 theme === "dark" ? <Sun size={24} /> : <Moon size={24} />
                             }
