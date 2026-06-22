@@ -5,6 +5,8 @@ import { adminLinks } from "@/constants/links";
 import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
 
 interface SidebarProps {
   mobile?: boolean;
@@ -14,12 +16,16 @@ const Sidebar = ({ mobile }: SidebarProps) => {
 
   const pathname = usePathname();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const logout = async () => {
+    setLoading(true);
     await fetch("/api/auth/logout", {
       method: "POST",
     });
     router.push("/");
+    setLoading(false);
+    toast.success("Logout Successful");
   }
 
   if (mobile) {
@@ -32,11 +38,10 @@ const Sidebar = ({ mobile }: SidebarProps) => {
             <Link
               key={link.name}
               href={link.path}
-              className={`flex flex-col items-center justify-center p-2 rounded-lg transition-all duration-300 ${
-                isActive
-                  ? "text-orange-600 dark:text-emerald-400 bg-orange-500/10 dark:bg-emerald-500/10"
-                  : "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"
-              }`}
+              className={`flex flex-col items-center justify-center p-2 rounded-lg transition-all duration-300 ${isActive
+                ? "text-orange-600 dark:text-emerald-400 bg-orange-500/10 dark:bg-emerald-500/10"
+                : "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                }`}
             >
               {Icon && <Icon size={24} className={isActive ? "scale-110 transition-transform" : ""} />}
               <span className="text-[10px] font-medium mt-1">{link.name}</span>
@@ -60,11 +65,10 @@ const Sidebar = ({ mobile }: SidebarProps) => {
             <Link
               key={link.name}
               href={link.path}
-              className={`group flex items-center gap-3 px-4 py-3 font-code rounded-xl transition-all duration-300 relative overflow-hidden ${
-                isActive
-                  ? "text-orange-600 dark:text-emerald-400 font-semibold bg-orange-500/10 dark:bg-emerald-500/10 border border-orange-500/20 dark:border-emerald-500/20 shadow-sm"
-                  : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 border border-transparent"
-              }`}
+              className={`group flex items-center gap-3 px-4 py-3 font-code rounded-xl transition-all duration-300 relative overflow-hidden ${isActive
+                ? "text-orange-600 dark:text-emerald-400 font-semibold bg-orange-500/10 dark:bg-emerald-500/10 border border-orange-500/20 dark:border-emerald-500/20 shadow-sm"
+                : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 border border-transparent"
+                }`}
             >
               {isActive && (
                 <div className="absolute left-0 top-0 w-1 h-full bg-orange-500 dark:bg-emerald-500 shadow-[0_0_10px_rgba(249,115,22,0.8)] dark:shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
@@ -76,7 +80,7 @@ const Sidebar = ({ mobile }: SidebarProps) => {
         })}
       </div>
       <Button variant="danger" onClick={logout} className="w-full flex justify-between items-center mt-4">
-        <span>Logout</span>
+        <span>{ loading ? "Logging out..." : "Logout" }</span>
         <LogOut size={20} />
       </Button>
     </div>

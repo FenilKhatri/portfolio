@@ -14,6 +14,7 @@ const Login = () => {
 
     const [showPass, setShowPass] = useState(false);
     const router = useRouter();
+    const [loading, setLoading] = useState(false);
 
     const {
         register,
@@ -24,6 +25,7 @@ const Login = () => {
     });
 
     const onSubmit = async (data: LoginInput) => {
+        setLoading(true);
         const res = await fetch("/api/auth/login", {
             method: "POST",
             headers: {
@@ -37,8 +39,11 @@ const Login = () => {
         if (result.success) {
             router.refresh();
             router.push("/admin/dashboard");
+            setLoading(false);
+            toast.success(result.message || "Login Successful");
         } else {
-            toast.error(result.message);
+            toast.error(result.message || "Login Failed");
+            setLoading(false);
         }
     };
 
@@ -85,12 +90,12 @@ const Login = () => {
 
                 <Button
                     type='submit'
-                    disabled={isSubmitting}
+                    disabled={loading || isSubmitting}
                     variant='primary'
                     className='w-full'
                 >
                     {
-                        isSubmitting ? "Logging In..." : "Login"
+                        isSubmitting || loading ? "Logging In..." : "Login"
                     }
                 </Button>
             </form>
