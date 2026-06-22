@@ -10,6 +10,7 @@ const Input = ({
   name,
   className = "",
   error,
+  children,
   ...props
 }: InputProps) => {
   return (
@@ -21,12 +22,17 @@ const Input = ({
         {label}
       </label>
 
-      <input
-        id={name}
-        name={name}
-        className={`w-full px-4 py-3 font-code bg-transparent border border-black/10 dark:border-white/10 outline-none transition-all duration-300 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-orange-500 dark:focus:border-emerald-500 focus:shadow-[0_0_15px_rgba(249,115,22,0.15)] dark:focus:shadow-[0_0_15px_rgba(16,185,129,0.15)] ${className}`}
-        {...props}
-      />
+      <div className="flex items-center border border-black/10 dark:border-white/10 outline-none transition-all duration-300 focus:border-orange-500 dark:focus:border-emerald-500 focus:shadow-[0_0_15px_rgba(249,115,22,0.15)] dark:focus:shadow-[0_0_15px_rgba(16,185,129,0.15)] rounded-lg">
+        <input
+          id={name}
+          name={name}
+          className={`w-full px-4 py-3 font-code bg-transparent outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500 rounded-lg ${className}`}
+          {...props}
+        />
+        <div className='px-3 border-l border-black/10 dark:border-white/10 h-full flex items-center'>
+          {children}
+        </div>
+      </div>
 
       {error && (
         <p className="font-code text-sm text-red-500">

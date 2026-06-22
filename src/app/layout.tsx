@@ -4,6 +4,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "@/store/Provider";
 import ThemeProvider from "@/store/ThemeProvider";
+import { Toaster } from "sonner";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -45,6 +46,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col overflow-x-hidden">
         <ReduxProvider>
           <ThemeProvider>
+            <Toaster position="top-right" />
             {children}
           </ThemeProvider>
         </ReduxProvider>

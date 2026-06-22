@@ -1,5 +1,6 @@
 import { PROFILE } from "./profile";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
+import { Home, User, LayoutDashboard, Folder, Mail, Code, GraduationCap, Briefcase } from "lucide-react";
 
 export const NavLinks = [
     { href: "/", label: "Home" },
@@ -31,12 +32,12 @@ export const socialLinks = [
 ];
 
 export const adminLinks = [
-    { name: "Home", path: "/" },
-    { name: "Profile", path: "/admin/profile" },
-    { name: "Dashboard", path: "/admin/dashboard" },
-    { name: "Projects", path: "/admin/projects" },
-    { name: "Contacts", path: "/admin/contacts" },
-    { name: "Skills", path: "/admin/skills" },
-    { name: "Education", path: "/admin/education" },
-    { name: "Experience", path: "/admin/experience" },
+    { name: "Home", path: "/", icon: Home },
+    { name: "Profile", path: "/admin/profile", icon: User },
+    { name: "Dashboard", path: "/admin/dashboard", icon: LayoutDashboard },
+    { name: "Projects", path: "/admin/projects", icon: Folder },
+    { name: "Contacts", path: "/admin/contacts", icon: Mail },
+    { name: "Skills", path: "/admin/skills", icon: Code },
+    { name: "Education", path: "/admin/education", icon: GraduationCap },
+    { name: "Experience", path: "/admin/experience", icon: Briefcase },
   ];

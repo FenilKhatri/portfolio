@@ -11,26 +11,23 @@ const sizes = {
     lg: "px-8 py-4 text-xl",
 };
 
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    variant?: keyof typeof variants;
+    size?: keyof typeof sizes;
+}
+
 const Button = ({
     children,
-    type="submit",
+    type = "submit",
     variant = "primary",
     size = "md",
     className = "",
     ...props
-}: { children: React.ReactNode; type?: "submit" | "button"; variant?: keyof typeof variants; size?: keyof typeof sizes; className?: string; props?: React.ComponentProps<"button"> }) => {
+}: ButtonProps) => {
     return (
         <button
             type={type}
-            className={`
-        inline-flex items-center justify-center gap-2
-        font-semibold hover:rounded-sm active:scale-95
-        transition duration-200 cursor-pointer
-        disabled:cursor-not-allowed disabled:opacity-60
-        ${variants[variant]}
-        ${sizes[size]}
-        ${className}
-      `}
+            className={`inline-flex items-center justify-center gap-2 font-semibold hover:rounded-sm active:scale-95 transition duration-200 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 ${variants[variant]} ${sizes[size]} ${className}`}
             {...props}
         >
             {children}
