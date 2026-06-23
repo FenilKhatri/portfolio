@@ -2,10 +2,9 @@ import { motion } from "framer-motion"
 import { containerVariants, viewAnimation } from "@/animations/motionVarients"
 import H2 from "../ui/H2"
 import Description from "../ui/Description"
-import { GithubIcon, LinkedinIcon } from "../icons"
+import { ArrowUpRightIcon, GithubIcon, LinkedinIcon } from "@/components/icons/index"
 import CurvedClipCard from "../ui/CurvedClipCard"
 import project1 from "@/public/images/projects/project1.png"
-import { ArrowUpRightIcon } from "lucide-react"
 
 interface ProjectCardProps {
     reverse?: boolean;

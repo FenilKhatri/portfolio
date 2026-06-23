@@ -35,7 +35,7 @@ const TimelineItem = ({ degree, institution, year, status, isLast = false, delay
             whileInView={{ height: "100%" }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: delay + 0.2 }}
-            className="w-0.5 bg-gradient-to-b from-orange-500 to-transparent dark:from-emerald-500 dark:to-transparent absolute top-4 bottom-0"
+            className="w-0.5 bg-linear-to-b from-orange-500 to-transparent dark:from-emerald-500 dark:to-transparent absolute top-4 bottom-0"
           />
         )}
       </div>
