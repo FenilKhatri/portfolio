@@ -6,7 +6,6 @@ import Title from "../ui/Title"
 import H2 from "../ui/H2"
 import TerminalCard from "../ui/TerminalCard"
 import TimelineItem from "../ui/TimelineItem"
-import Badge from "../ui/Badge"
 import { education, experiences } from "@/data/education&experience"
 
 const ExperienceAndEducationSection = () => {
@@ -58,12 +57,6 @@ const ExperienceAndEducationSection = () => {
                     <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                       {exp.description}
                     </p>
-                    
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {exp.skills.map((skill, sIdx) => (
-                        <Badge key={sIdx}>{skill}</Badge>
-                      ))}
-                    </div>
                   </div>
                 </TerminalCard>
               ))}
@@ -84,10 +77,12 @@ const ExperienceAndEducationSection = () => {
               {education.map((edu, idx) => (
                 <TimelineItem 
                   key={idx}
+                  university={edu.university}
                   degree={edu.degree}
-                  institution={edu.institution}
-                  year={edu.year}
-                  status={edu.status}
+                  fieldOfStudy={edu.fieldOfStudy}
+                  startDate={edu.startDate}
+                  endDate={edu.endDate}
+                  cgpa={edu.cgpa}
                   isLast={idx === education.length - 1}
                   delay={idx * 0.15}
                 />
