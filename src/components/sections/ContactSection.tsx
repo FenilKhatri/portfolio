@@ -3,29 +3,21 @@
 import { itemVariants, slideLeft, slideRight, stagger, viewAnimation } from "@/animations/motionVarients";
 import { PROFILE } from "@/constants/profile";
 import { motion } from "framer-motion";
-import Input from "../ui/Input";
-import Button from "../ui/Button";
-import TextArea from "../ui/TextArea";
-import useTheme from "@/hooks/useTheme";
+import H2 from "../ui/H2";
+import Description from "../ui/Description";
+import ContactForm from "../contact/ContactForm";
+import Title from "../ui/Title";
 
 const ContactSection = () => {
-
-  const { theme } = useTheme();
-
   return (
     <div
       className="min-h-screen w-full max-w-[1600px] mx-auto py-10 md:py-20 px-4 sm:px-6 md:px-12"
     >
 
-      <motion.div
-        variants={slideRight}
-        {...viewAnimation}
+      <div
         className="space-y-5 md:space-y-10"
       >
-        <div className="flex gap-5 items-center text-sm font-semibold tracking-[0.3em] uppercase text-orange-500 dark:text-emerald-500">
-          <span className="h-3 w-3 rounded-full bg-orange-500 dark:bg-emerald-500 animate-bounce" />
-          Contact
-        </div>
+        <Title title="Contact" />
 
         <div className="relative p-5 md:p-12 border border-black/10 dark:border-white/10 flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-20">
 
@@ -41,16 +33,23 @@ const ContactSection = () => {
           </div>
 
           {/* LEFT SIDE */}
-          <div className="space-y-6 md:space-y-8 w-full lg:w-[50%]">
+          <div className="w-full lg:w-[50%] overflow-x-clip px-4 -mx-4">
+            <motion.div
+              variants={slideRight}
+              {...viewAnimation}
+              className="space-y-6 md:space-y-8"
+            >
 
-            <div>
-              <p className="font-code text-3xl md:text-4xl font-bold leading-tight text-orange-500 dark:text-emerald-500 uppercase">
-                Let's Build Something Amazing.
-              </p>
+            <div className="mt-0">
+              <H2>
+                  <span className="font-code text-orange-500 dark:text-emerald-500">
+                      Let's Build Something Amazing.
+                  </span>
+              </H2>
 
-              <p className="mt-4 font-code text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-                I'm always open to new opportunities, freelance projects.
-              </p>
+              <Description className="font-code">
+                  I'm always open to new opportunities, freelance projects.
+              </Description>
             </div>
 
             {/* Contact Links */}
@@ -89,43 +88,20 @@ const ContactSection = () => {
                 );
               })}
             </motion.div>
+            </motion.div>
           </div>
 
           {/* RIGHT SIDE */}
-          <motion.div
-            variants={slideLeft}
-            {...viewAnimation}
-            className="w-full lg:max-w-2xl"
-          >
-            <form
-              className="p-5 sm:p-6 md:p-8 space-y-6 border border-black/10 dark:border-white/10 bg-slate-100/80 dark:bg-black/50 backdrop-blur-md shadow-xl"
+          <div className="w-full lg:max-w-2xl overflow-x-clip px-4 -mx-4">
+            <motion.div
+              variants={slideLeft}
+              {...viewAnimation}
             >
-              <Input
-                label="Name"
-                name="name"
-                placeholder="Enter your name"
-                required
-              />
-
-              <Input
-                label="Email"
-                name="email"
-                placeholder="Enter your email"
-                required
-              />
-
-              <TextArea
-                label="Message"
-                name="message"
-                placeholder="Enter your message"
-                required
-              />
-
-              <Button type="submit" variant={theme === 'dark' ? 'primary' : 'secondary'} className="w-full" children="Send Message" />
-            </form>
-          </motion.div>
+            <ContactForm />
+            </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
     </div>
   )
