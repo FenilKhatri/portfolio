@@ -9,34 +9,16 @@ import { motion } from "framer-motion";
 import { containerVariants, itemVariants, scaleIn, loadAnimation } from "@/animations/motionVarients";
 import useTheme from "@/hooks/useTheme";
 import Heroimg from "../hero/Heroimg";
-import { useEffect, useState } from "react";
+import { profile } from "@/data/profile";
 
 const HeroSection = () => {
 
     const { theme } = useTheme();
-    const [profile, setProfile] = useState<any>(null);
-
-    useEffect(() => {
-        const handleProfile = async () => {
-            try {
-                const res = await fetch("/api/profile");
-                const data = await res.json();
-                if (data.data && data.data.length > 0) {
-                    setProfile(data.data[0]);
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        handleProfile();
-    }, []);
-
-    if (!profile) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
 
     return (
         <div
             id="home"
-            className="min-h-screen w-full max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-8 lg:gap-16 px-5 py-20"
+            className="min-h-screen w-full max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-8 lg:gap-16 px-5 py-20 overflow-x-clip"
         >
             {/* Text Section */}
             <motion.div

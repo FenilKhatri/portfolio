@@ -51,7 +51,7 @@ const TimelineItem = ({ edu, isLast = false, delay = 0 }: TimelineItemProps) => 
         <p className="text-base text-gray-700 dark:text-gray-300">
           {edu.university}
         </p>
-        <div className="flex items-center gap-3 mt-1">
+        <div className="flex flex-wrap items-center gap-3 mt-1">
           <span className="font-code text-sm text-orange-600 dark:text-emerald-400">
             {edu.startDate} - {edu.endDate}
           </span>

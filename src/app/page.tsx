@@ -9,25 +9,39 @@ import SkillsSection from "@/components/sections/SkillsSection";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fenil-khatri.vercel.app"),
-  title: "Fenil Khatri | MERN Stack Developer",
-  description: "Software Engineering Intern and MERN Stack Developer specializing in developing in Web development.",
+  title: "Fenil Khatri | MERN Stack Developer & Software Engineer",
+  description: "Portfolio of Fenil Khatri, a Software Engineering Intern and MERN Stack Developer specializing in building high-performance, responsive web applications using Next.js, React, and TypeScript.",
   keywords: [
     "Fenil Khatri",
     "MERN Stack Developer",
     "Next.js Developer",
+    "React Developer",
     "TypeScript",
     "Node.js",
     "Portfolio",
+    "Software Engineer",
+    "Web Development"
   ],
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: "/favicon.ico"
   },
   openGraph: {
+    type: "website",
+    url: "https://fenil-khatri.vercel.app",
     siteName: "Fenil Khatri",
-    title: "Fenil Khatri | MERN Stack Developer",
-    description: "Portfolio of Fenil Khatri, MERN Stack Developer.",
+    title: "Fenil Khatri | Full Stack Developer",
+    description: "Explore my projects, skills, and experience as a MERN Stack Developer.",
     images: ["/images/profile/image.png"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fenil Khatri | MERN Stack Developer",
+    description: "Explore my projects, skills, and experience as a MERN Stack Developer.",
+    images: ["/images/profile/image.png"],
+  }
 }
 
 export default function Home() {

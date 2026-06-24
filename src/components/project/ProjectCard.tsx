@@ -4,28 +4,13 @@ import H2 from "../ui/H2"
 import Description from "../ui/Description"
 import { ArrowUpRightIcon, GithubIcon, LinkedinIcon } from "@/components/icons/index"
 import CurvedClipCard from "../ui/CurvedClipCard"
-import { useEffect, useState } from "react"
-import { toast } from "sonner"
-import { span } from "framer-motion/client"
+import { projects } from "@/data/projects"
 
 interface ProjectCardProps {
     reverse?: boolean;
 }
 
 const ProjectCard = ({ reverse = false }: ProjectCardProps) => {
-
-    const [projects, setProjects] = useState([]);
-
-    useEffect(() => {
-        const handleProject = async () => {
-            const response = await fetch("/api/projects");
-            const data = await response.json();
-
-            if (!response.ok) return toast.error(data.message || "Failed to fetch Projects!");
-            setProjects(data.data);
-        }
-        handleProject();
-    }, []);
 
     return (
         <>
@@ -52,7 +37,7 @@ const ProjectCard = ({ reverse = false }: ProjectCardProps) => {
                                 maxWidth="650px"
                                 className="w-full lg:flex-[0_0_40%]"
                                 dockContent={
-                                    <a href={project.liveURL}>
+                                    <a href={project.liveURL} target="_blank">
                                         <ArrowUpRightIcon />
                                     </a>
                                 }
@@ -79,7 +64,7 @@ const ProjectCard = ({ reverse = false }: ProjectCardProps) => {
                                     }
                                 </div>
 
-                                <a href={project.githubURL} className="flex items-center gap-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 border border-black/10 dark:border-white/10 text-black dark:text-white px-5 py-2.5 rounded-lg transition-colors font-semibold text-sm">
+                                <a href={project.githubURL} target="_blank" className="flex items-center gap-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 border border-black/10 dark:border-white/10 text-black dark:text-white px-5 py-2.5 rounded-lg transition-colors font-semibold text-sm">
                                     <GithubIcon />
                                     <span>Code</span>
                                 </a>

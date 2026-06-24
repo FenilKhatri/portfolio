@@ -78,17 +78,24 @@ export default function CurvedClipCard({
       : generateBottomRightPath(270, 52, W, H);
   });
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     if (!containerRef.current) return;
 
     const updatePath = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+
       const container = containerRef.current;
       if (!container) return;
 
       const containerRect = container.getBoundingClientRect();
       if (containerRect.width === 0 || containerRect.height === 0) return;
 
-      if (dockPosition === "none" || !dockRef.current) {
+      const effectiveDock = mobile ? "none" : dockPosition;
+
+      if (effectiveDock === "none" || !dockRef.current) {
         setPath(generateRectPath(W, H));
         return;
       }
@@ -213,19 +220,19 @@ export default function CurvedClipCard({
         />
       </svg>
 
-      {dockPosition !== "none" && dockContent && (
+      {dockContent && (
         <div
           className="absolute"
           style={{
-            top: dockPosition === "top-right" ? "16px" : "auto",
-            bottom: dockPosition === "bottom-right" ? "16px" : "auto",
-            right: "16px",
+            top: dockPosition === "top-right" ? (isMobile ? "8px" : "16px") : "auto",
+            bottom: dockPosition === "bottom-right" ? (isMobile ? "8px" : "16px") : "auto",
+            right: isMobile ? "8px" : "16px",
           }}
         >
           <div 
             ref={dockRef}
             className={`w-fit flex items-center justify-center rounded-xl backdrop-blur-sm bg-white/30 dark:bg-black/45 border border-white/40 dark:border-white/10 shadow-[0_2px_16px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.25)] dark:shadow-[0_2px_16px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.06)] text-orange-600 dark:text-emerald-400 hover:text-orange-500 dark:hover:text-emerald-300 transition-colors duration-150 cursor-pointer ${
-              variant === "project" ? "p-3" : "px-3 py-[12px] gap-3"
+              variant === "project" ? (isMobile ? "p-2" : "p-3") : "px-3 py-[12px] gap-3"
             }`}
           >
             {dockContent}

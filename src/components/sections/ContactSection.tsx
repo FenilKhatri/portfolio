@@ -1,11 +1,10 @@
 "use client";
 
-import { itemVariants, slideLeft, slideRight, stagger, viewAnimation } from "@/animations/motionVarients";
+import { itemVariants, slideRight, stagger, viewAnimation } from "@/animations/motionVarients";
 import { PROFILE } from "@/constants/profile";
 import { motion } from "framer-motion";
 import H2 from "../ui/H2";
 import Description from "../ui/Description";
-import ContactForm from "../contact/ContactForm";
 import Title from "../ui/Title";
 
 const ContactSection = () => {
@@ -19,7 +18,7 @@ const ContactSection = () => {
       >
         <Title title="Contact" />
 
-        <div className="relative p-5 md:p-12 border border-black/10 dark:border-white/10 flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-20">
+        <div className="relative p-5 md:p-12 border border-black/10 dark:border-white/10 flex flex-col items-center justify-center gap-10">
 
           {/* Background Glow */}
           <div className="absolute inset-0 -z-10">
@@ -32,8 +31,8 @@ const ContactSection = () => {
             Start a Project
           </div>
 
-          {/* LEFT SIDE */}
-          <div className="w-full lg:w-[50%] overflow-x-clip px-4 -mx-4">
+          {/* Main Content */}
+          <div className="w-full max-w-2xl mx-auto overflow-x-clip px-4">
             <motion.div
               variants={slideRight}
               {...viewAnimation}
@@ -47,8 +46,8 @@ const ContactSection = () => {
                   </span>
               </H2>
 
-              <Description className="font-code">
-                  I'm always open to new opportunities, freelance projects.
+              <Description className="font-code mt-4">
+                  I'm always open to new opportunities and freelance projects. Whether you have a question or just want to say hi, feel free to reach out using the links below!
               </Description>
             </div>
 
@@ -58,7 +57,7 @@ const ContactSection = () => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="flex flex-col space-y-4"
+              className="flex flex-col space-y-4 pt-4"
             >
               {PROFILE.data.map((item) => {
                 const Icon = item.icon;
@@ -69,9 +68,9 @@ const ContactSection = () => {
                     variants={itemVariants}
                   >
                     <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={item.href || "#"}
+                      target={item.href ? "_blank" : undefined}
+                      rel={item.href ? "noopener noreferrer" : undefined}
                       className="group flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 hover:translate-x-2"
                     >
                       <div
@@ -91,15 +90,6 @@ const ContactSection = () => {
             </motion.div>
           </div>
 
-          {/* RIGHT SIDE */}
-          <div className="w-full lg:max-w-2xl overflow-x-clip px-4 -mx-4">
-            <motion.div
-              variants={slideLeft}
-              {...viewAnimation}
-            >
-            <ContactForm />
-            </motion.div>
-          </div>
         </div>
       </div>
 

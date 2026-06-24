@@ -1,22 +1,8 @@
 import { stagger, viewAnimation } from "@/animations/motionVarients";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { skills } from "@/data/skills";
 
 const TechCards = () => {
-
-    const [skills, setSkills] = useState([]);
-
-    useEffect(() => {
-        const handleSkills = async () => {
-            const response = await fetch("/api/skills");
-            const data = await response.json();
-
-            if (!response.ok) return toast.error(data.message || "Failed to fetch skills!");
-            setSkills(data.data);
-        };
-        handleSkills();
-    }, []);
 
     return (
         <motion.div

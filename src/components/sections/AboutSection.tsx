@@ -26,7 +26,7 @@ const AboutSection = () => {
         </motion.div>
 
         {/* RIGHT SIDE — text column */}
-        <div className="order-1 md:order-2 overflow-x-clip px-4 -mx-4">
+        <div className="order-1 md:order-2 overflow-x-clip">
           <motion.div
             variants={slideRight}
             {...viewAnimation}
