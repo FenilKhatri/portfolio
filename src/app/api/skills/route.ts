@@ -1,8 +1,10 @@
 import Skill from "@/models/skill";
+import { connectDB } from "@/utils/db";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
+    await connectDB();
     const skills = await Skill.findAll({
       order: [["createdAt", "DESC"]]
     });

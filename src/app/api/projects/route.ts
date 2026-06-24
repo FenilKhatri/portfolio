@@ -1,8 +1,10 @@
 import Project from "@/models/project";
+import { connectDB } from "@/utils/db";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
+    await connectDB();
     const projects = await Project.findAll({
       order: [["createdAt", "DESC"]]
     });

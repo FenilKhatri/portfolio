@@ -1,8 +1,10 @@
 import Education from "@/models/education";
+import { connectDB } from "@/utils/db";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
     try {
+        await connectDB();
         const education = await Education.findAll({
             order: [["createdAt", "DESC"]]
         });

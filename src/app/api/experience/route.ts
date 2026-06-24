@@ -1,8 +1,10 @@
 import Experience from "@/models/experience";
+import { connectDB } from "@/utils/db";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
     try {
+        await connectDB();
         const experience = await Experience.findAll({
             order: [["createdAt", "DESC"]]
         });
