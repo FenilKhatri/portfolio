@@ -1,4 +1,6 @@
-export const experiences = [
+import { IEducation, IExperience } from "@/types/models";
+
+export const experiences: IExperience[] = [
   {
     role: "Full Stack Developer Intern",
     company: "Tech Innovators Inc.",
@@ -15,7 +17,7 @@ export const experiences = [
   }
 ];
 
-export const education = [
+export const education: IEducation[] = [
   {
     university: "XYZ University",
     degree: "Bachelor",

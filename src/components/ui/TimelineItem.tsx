@@ -1,17 +1,12 @@
 import { motion } from "framer-motion";
 
 interface TimelineItemProps {
-  degree: string;
-  fieldOfStudy: string;
-  university: string;
-  startDate: string;
-  endDate: string;
-  cgpa: string;
+  edu: any;
   isLast?: boolean;
   delay?: number;
 }
 
-const TimelineItem = ({ degree, fieldOfStudy, university, startDate, endDate, cgpa, isLast = false, delay = 0 }: TimelineItemProps) => {
+const TimelineItem = ({ edu, isLast = false, delay = 0 }: TimelineItemProps) => {
   return (
     <div className="relative flex gap-6 pb-12">
       {/* Timeline Line & Dot */}
@@ -51,17 +46,17 @@ const TimelineItem = ({ degree, fieldOfStudy, university, startDate, endDate, cg
         className="flex flex-col space-y-2 -mt-1.5"
       >
         <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-          {degree} in {fieldOfStudy}
+          {edu.degree} {edu.fieldOfStudy ? `in ${edu.fieldOfStudy}` : ""}
         </h3>
         <p className="text-base text-gray-700 dark:text-gray-300">
-          {university}
+          {edu.university}
         </p>
         <div className="flex items-center gap-3 mt-1">
           <span className="font-code text-sm text-orange-600 dark:text-emerald-400">
-            {startDate} - {endDate}
+            {edu.startDate} - {edu.endDate}
           </span>
           <span className="text-xs px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/10 text-gray-600 dark:text-gray-400">
-            CGPA (grade): {cgpa}
+            CGPA (grade): {edu.cgpa}
           </span>
         </div>
       </motion.div>

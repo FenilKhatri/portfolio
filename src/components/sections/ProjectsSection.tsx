@@ -30,10 +30,6 @@ const ProjectsSection = () => {
         </div>
 
         <ProjectCard />
-        <ProjectCard reverse />
-        <ProjectCard />
-        <ProjectCard reverse />
-        <ProjectCard />
       </div>
     </div>
   )

@@ -1,8 +1,7 @@
 import { Code2, Database, Globe, Server } from 'lucide-react'
 import Image from 'next/image'
-import heroImg from "@/public/images/profile/image.png";
 
-const Heroimg = () => {
+const Heroimg = ({ image }: { image: any }) => {
     return (
         <div className="relative w-fit flex justify-center items-center">
             {/* Availability Badge */}
@@ -49,7 +48,7 @@ const Heroimg = () => {
 
             {/* Profile Image */}
             <Image
-                src={heroImg}
+                src={image}
                 alt="Fenil Khatri"
                 width={500}
                 height={500}

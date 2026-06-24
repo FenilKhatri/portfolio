@@ -14,6 +14,10 @@ const Project = sequelize.define("Project", {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    imageURL: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     githubURL: {
         type: DataTypes.STRING,
         allowNull: false,

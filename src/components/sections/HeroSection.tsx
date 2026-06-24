@@ -9,10 +9,29 @@ import { motion } from "framer-motion";
 import { containerVariants, itemVariants, scaleIn, loadAnimation } from "@/animations/motionVarients";
 import useTheme from "@/hooks/useTheme";
 import Heroimg from "../hero/Heroimg";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
 
     const { theme } = useTheme();
+    const [profile, setProfile] = useState<any>(null);
+
+    useEffect(() => {
+        const handleProfile = async () => {
+            try {
+                const res = await fetch("/api/profile");
+                const data = await res.json();
+                if (data.data && data.data.length > 0) {
+                    setProfile(data.data[0]);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        handleProfile();
+    }, []);
+
+    if (!profile) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
 
     return (
         <div
@@ -25,7 +44,7 @@ const HeroSection = () => {
                 {...loadAnimation}
                 className="w-full md:w-1/2 flex flex-col gap-5 md:gap-8 items-start text-left">
                 <motion.div variants={itemVariants}>
-                    <p className="bg-orange-100/20 dark:bg-emerald-100/20 text-orange-500 dark:text-emerald-500 border border-orange-500/30 dark:border-emerald-500/30 w-fit px-4 py-2">MERN Stack Intern</p>
+                    <p className="bg-orange-100/20 dark:bg-emerald-100/20 text-orange-500 dark:text-emerald-500 border border-orange-500/30 dark:border-emerald-500/30 w-fit px-4 py-2">{profile.tagline}</p>
                 </motion.div>
 
                 <motion.div variants={itemVariants}>
@@ -35,7 +54,7 @@ const HeroSection = () => {
                         </span>
                         Hi, I'm{" "}
                         <span className="block font-code text-orange-500 dark:text-emerald-500 mt-2">
-                            Fenil Khatri
+                            {profile.name}
                         </span>
 
                         <span className="text-orange-500 dark:text-emerald-500">
@@ -53,48 +72,40 @@ const HeroSection = () => {
                                 repeat={Infinity}
                             />
                         </span>{" "}
-                        Web Applications
+                        {profile.headline}
                     </H1>
                 </motion.div>
 
                 <motion.div variants={itemVariants}>
                     <Description className="max-w-2xl text-base sm:text-lg lg:text-xl leading-8 text-slate-600 dark:text-slate-400 text-justify">
-                        I build responsive and user-focused web applications
-                        using{" "}
-                        <span className="font-medium text-black dark:text-white">
-                            Next.js, TypeScript, Node.js, and MongoDB/MySQL
-                        </span>
-                        . As a Software Engineering Intern, I'm constantly
-                        learning new technologies and improving my skills
-                        through real-world projects.
+                        {profile.about}
                     </Description>
                 </motion.div>
 
                 <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto">
-                    <Button
-                        variant={theme === "dark" ? "primary" : "secondary"}
-                        size="md"
-                        children={
-                            <a href="#projects">
-                                View Projects
-                            </a>
-                        }
-                    />
+                    <a href="#projects">
+                        <Button
+                            variant={theme === "dark" ? "primary" : "secondary"}
+                            size="md"
+                        >
+                            View Projects
+                        </Button>
+                    </a>
 
-                    <Button
-                        variant="outline"
-                        size="md"
-                        children={
-                            <a
-                                href="/resume.pdf"
-                                download
-                                className="flex items-center gap-2"
-                            >
-                                Download Resume
-                                <Download size={20} />
-                            </a>
-                        }
-                    />
+                    <a
+                        href={profile.resumeURL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Button
+                            variant="outline"
+                            size="md"
+                            className="flex items-center gap-2"
+                        >
+                            Download Resume
+                            <Download size={20} />
+                        </Button>
+                    </a>
                 </motion.div>
             </motion.div>
 
@@ -104,7 +115,7 @@ const HeroSection = () => {
                 {...loadAnimation}
                 className="relative flex justify-center mt-12 md:mt-0 w-full md:w-1/2 mx-auto">
 
-                <Heroimg />
+                {profile.imageURL && <Heroimg image={profile.imageURL} />}
             </motion.div>
         </div>
     );

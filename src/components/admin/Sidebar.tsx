@@ -2,7 +2,8 @@
 
 import Button from "@/components/ui/Button";
 import { adminLinks } from "@/constants/links";
-import { LogOut } from "lucide-react";
+import useTheme from "@/hooks/useTheme";
+import { LogOut, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -17,6 +18,7 @@ const Sidebar = ({ mobile }: SidebarProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const { theme, handleTheme } = useTheme();
 
   const logout = async () => {
     setLoading(true);
@@ -26,7 +28,7 @@ const Sidebar = ({ mobile }: SidebarProps) => {
     router.push("/");
     setLoading(false);
     toast.success("Logout Successful");
-  }
+  };
 
   if (mobile) {
     return (
@@ -55,8 +57,15 @@ const Sidebar = ({ mobile }: SidebarProps) => {
   return (
     <div className="h-full flex flex-col justify-between py-6 px-4">
       <div className="flex flex-col gap-2 w-full">
-        <div className="mb-8 px-4 text-xl font-bold tracking-tight text-black dark:text-white">
-          Admin<span className="text-orange-500 dark:text-emerald-500">Panel</span>
+        <div className="flex justify-between items-center gap-3 mb-8 px-4">
+          <p className="text-xl font-bold tracking-tight text-black dark:text-white">
+            Admin<span className="text-orange-500 dark:text-emerald-500">Panel</span>
+          </p>
+          <button className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer" onClick={handleTheme}>
+            {
+              theme === "dark" ? <Sun size={20} /> : <Moon size={20} />
+            }
+          </button>
         </div>
         {adminLinks.map((link) => {
           const isActive = pathname === link.path;
@@ -80,7 +89,7 @@ const Sidebar = ({ mobile }: SidebarProps) => {
         })}
       </div>
       <Button variant="danger" onClick={logout} className="w-full flex justify-between items-center mt-4">
-        <span>{ loading ? "Logging out..." : "Logout" }</span>
+        <span>{loading ? "Logging out..." : "Logout"}</span>
         <LogOut size={20} />
       </Button>
     </div>

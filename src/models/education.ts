@@ -12,7 +12,7 @@ const Education = sequelize.define("Education", {
     },
     fieldOfStudy: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     startDate: {
         type: DataTypes.DATE,
@@ -20,11 +20,9 @@ const Education = sequelize.define("Education", {
     },
     endDate: {
         type: DataTypes.DATE,
-        allowNull: false,
     },
-    gpa: {
-        type: DataTypes.DECIMAL(3, 2),
-        allowNull: false,
+    cgpa: {
+        type: DataTypes.DECIMAL(5, 2),
     },
     createdAt: {
         type: DataTypes.DATE,

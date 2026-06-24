@@ -1,25 +1,50 @@
 "use client";
 
 import ProjectForm from "@/components/admin/ProjectForm";
-import { motion } from "framer-motion";
+import AdminTable from "@/components/admin/AdminTable";
+import { projectsColumns } from "@/constants/adminTableColumns";
+import { useState } from "react";
+import { useFetch } from "@/hooks/useFetch";
+import { Project } from "@/types/table";
+import AdminPageLayout from "@/components/admin/AdminPageLayout";
+import useDelete from "@/hooks/useDelete";
 
 const ProjectsPage = () => {
+  const { data: projects, loading, error, refetch } = useFetch<Project[]>("/api/admin/projects");
+  const { handleDelete } = useDelete({ refetch, endPoint: "/api/admin/projects", dataName: "Project" });
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingData, setEditingData] = useState<Project | null>(null);
+
+  const handleEdit = (project: Project) => {
+    setEditingData(project);
+    setIsEditing(true);
+  };
+
+  const handleClose = () => {
+    setEditingData(null);
+    setIsEditing(false);
+  };
+
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className="w-full max-w-5xl"
+    <AdminPageLayout
+      title="Manage Projects"
+      isEditing={isEditing}
+      setIsEditing={(val) => {
+        setIsEditing(val);
+        if (!val) setEditingData(null);
+      }}
+      actionButtonLabel="Add Project"
     >
-      <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold font-code text-black dark:text-white tracking-tight">Add Project</h1>
-        <p className="text-gray-500 dark:text-gray-400 mt-2 font-code">Showcase your latest work and case studies.</p>
-      </div>
-      
-      <div className="p-6 md:p-10 w-full border-2 border-black/10 dark:border-white/10 bg-white/60 dark:bg-[#111] backdrop-blur-2xl shadow-2xl shadow-black/5 dark:shadow-black/50">
-        <ProjectForm />
-      </div>
-    </motion.div>
+      {isEditing && (
+        <div className="p-6 md:p-10 w-full border-2 border-black/10 dark:border-white/10 bg-white/60 dark:bg-[#111] backdrop-blur-2xl shadow-2xl shadow-black/5 dark:shadow-black/50 mb-8">
+          <ProjectForm initialData={editingData} onSuccess={() => { handleClose(); refetch(); }} onCancel={handleClose} />
+        </div>
+      )}
+
+      {!isEditing && (
+        <AdminTable columns={projectsColumns} data={projects || []} loading={loading} error={error} refetch={refetch} onEdit={handleEdit} onDelete={handleDelete} />
+      )}
+    </AdminPageLayout>
   );
 };
 

@@ -1,8 +1,23 @@
 import { stagger, viewAnimation } from "@/animations/motionVarients";
-import { techStack } from "@/data/skills";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const TechCards = () => {
+
+    const [skills, setSkills] = useState([]);
+
+    useEffect(() => {
+        const handleSkills = async () => {
+            const response = await fetch("/api/skills");
+            const data = await response.json();
+
+            if (!response.ok) return toast.error(data.message || "Failed to fetch skills!");
+            setSkills(data.data);
+        };
+        handleSkills();
+    }, []);
+
     return (
         <motion.div
             variants={stagger}
@@ -12,9 +27,9 @@ const TechCards = () => {
             <div className="w-full border-y-4 border-black dark:border-white py-5">
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 border-l border-black/10 dark:border-white/10">
                     {
-                        techStack.map((tech) => (
+                        skills.map((skill: any) => (
                             <motion.div
-                                key={tech.name}
+                                key={skill.skillName}
                                 variants={{
                                     hidden: { opacity: 0, y: 20 },
                                     show: { opacity: 1, y: 0 }
@@ -29,10 +44,10 @@ const TechCards = () => {
 
                                 <div className="relative z-10 flex flex-col items-center gap-2">
                                     <span className="text-[10px] md:text-xs tracking-[0.2em] text-black/40 dark:text-white/40 uppercase font-mono">
-                                        . // {tech.type}
+                                        . // {skill.category}
                                     </span>
                                     <span className="font-code text-sm md:text-lg font-bold tracking-wider uppercase text-black/80 dark:text-white/80 group-hover:text-orange-600 dark:group-hover:text-emerald-400 transition-colors duration-300 text-center">
-                                        {tech.name}
+                                        {skill.skillName}
                                     </span>
                                 </div>
                             </motion.div>

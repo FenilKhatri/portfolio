@@ -1,5 +1,12 @@
 import sequelize from "./sequelize";
 
+import "@/models/contact";
+import "@/models/education";
+import "@/models/experience";
+import "@/models/profile";
+import "@/models/project";
+import "@/models/skill";
+
 export const connectDB = async () => {
     try {
         await sequelize.authenticate();

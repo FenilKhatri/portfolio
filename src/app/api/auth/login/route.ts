@@ -2,9 +2,10 @@ import bcrypt from "bcryptjs";
 import { generateToken, setAuthCookie } from "@/lib/auth";
 import { LoginSchema } from "@/lib/validations/auth";
 
-export async function POST(req: Request) {
-  try {
-    const body = await req.json();
+import { asyncHandler } from "@/lib/asyncHandler";
+
+export const POST = asyncHandler(async(req) => {
+  const body = await req.json();
 
     const validated = LoginSchema.safeParse(body);
 
@@ -42,14 +43,8 @@ export async function POST(req: Request) {
     const token = await generateToken({ email });
     await setAuthCookie(token);
 
-    return Response.json({
-      success: true,
-      message: "Login successful",
-    });
-  } catch {
-    return Response.json(
-      { success: false, message: "Server Error" },
-      { status: 500 }
-    );
-  }
-}
+  return Response.json({
+    success: true,
+    message: "Login successful",
+  });
+});

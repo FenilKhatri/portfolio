@@ -1,31 +1,47 @@
 import { motion } from "framer-motion";
 
 interface TerminalCardProps {
-  children: React.ReactNode;
-  className?: string;
+  exp: any;
   delay?: number;
 }
 
-const TerminalCard = ({ children, className = "", delay = 0 }: TerminalCardProps) => {
+const TerminalCard = ({ exp, delay = 0 }: TerminalCardProps) => {
   return (
     <motion.div
+      key={exp.id}
+      className="group relative rounded-2xl overflow-hidden"
+      whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -5 }}
-      className={`relative w-full rounded-xl overflow-hidden bg-black/40 dark:bg-black/60 border border-white/10 dark:border-white/5 backdrop-blur-sm shadow-xl transition-all duration-300 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] dark:hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:border-orange-500/30 dark:hover:border-emerald-500/30 ${className}`}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: delay }}
     >
-      {/* Mac OS Style Top Bar */}
-      <div className="flex items-center gap-2 px-4 py-3 bg-white/5 dark:bg-white/5 border-b border-white/5">
-        <div className="w-3 h-3 rounded-full bg-red-500/80" />
-        <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-        <div className="w-3 h-3 rounded-full bg-green-500/80" />
-      </div>
-      
-      {/* Content Area */}
-      <div className="p-6">
-        {children}
+      {/* Inner card */}
+      <div className="relative h-full bg-slate-100 dark:bg-[#0a0a0a] backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-black/5 dark:border-white/10 flex flex-col shadow-xl">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+          <div>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+              {exp.role}
+            </h3>
+            <p className="text-lg text-orange-600 dark:text-emerald-400 font-medium font-code mt-1">
+              {exp.company}
+            </p>
+          </div>
+          <div className="text-left md:text-right flex flex-col md:items-end gap-1">
+            <span className="inline-block text-xs md:text-sm px-3 py-1 rounded-full bg-orange-100 dark:bg-white/5 text-orange-600 dark:text-gray-300 font-code font-semibold">
+              {exp.duration}
+            </span>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              {exp.location}
+            </p>
+          </div>
+        </div>
+
+        <div className="w-full h-px bg-black/5 dark:bg-white/10 my-4" />
+
+        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base">
+          {exp.description}
+        </p>
       </div>
     </motion.div>
   );
